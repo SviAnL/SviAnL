@@ -1,0 +1,14 @@
+[data-theme='high-contrast'] {
+  --color-primary: #ffff00;
+  --color-secondary: #00ffff;
+  --color-accent: #ff00ff;
+  --color-background: #000000;
+  --color-surface: #1a1a1a;
+  --color-surface-hover: #2a2a2a;
+  --color-foreground: #ffffff;
+  --color-muted: #cccccc;
+  --color-border: #ffffff;
+  --color-success: #00ff00;
+  --color-warning: #ffff00;
+  --color-error: #ff0000;
+}

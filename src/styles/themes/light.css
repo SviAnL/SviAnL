@@ -1,0 +1,15 @@
+[data-theme='light'],
+:root {
+  --color-primary: #3b82f6;
+  --color-secondary: #6366f1;
+  --color-accent: #06b6d4;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  --color-foreground: #0f172a;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}

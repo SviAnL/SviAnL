@@ -1,0 +1,264 @@
+请你作为一名资深前端架构师，从零开始搭建一套符合开源项目标准、企业级工程化规范的个人门户网站项目。项目将长期维护并托管至 GitHub，要求代码质量高、结构清晰、注释完善、可扩展性强、技术栈均为当前生态最新稳定版本，所有功能完整可直接运行。
+一、技术栈要求（全部使用最新稳定版）
+核心基础栈
+构建工具：Vite 最新版
+前端框架：Vue 3 最新版（Composition API + <script setup lang="ts"> 语法糖）
+开发语言：TypeScript 最新版（开启严格模式）
+包管理器：pnpm 最新版
+路由管理：Vue Router 4 最新版
+状态管理：Pinia 最新版 + pinia-plugin-persistedstate（状态持久化）
+国际化：vue-i18n 最新版
+样式与动画
+CSS 框架：Tailwind CSS 最新版
+动画库：animejs 最新版
+图标方案：unplugin-icons + Iconify（按需加载，零体积）
+主题系统：基于 CSS 变量 + Tailwind 自定义主题
+工程化规范
+代码检查：ESLint 最新版（Vue 官方规则 + TypeScript 支持 + 导入排序）
+代码格式化：Prettier 最新版
+样式检查：Stylelint 最新版（配合 Tailwind 规则）
+Git 钩子：husky 最新版
+暂存区校验：lint-staged 最新版
+提交信息校验：commitlint 最新版（Conventional Commits 规范）
+提交辅助工具：commitizen + cz-conventional-changelog
+自动导入：unplugin-auto-import、unplugin-vue-components
+版本管理：standard-version（自动生成更新日志、语义化版本）
+网络与数据
+请求库：Axios 最新版（完整封装拦截器）
+Mock 方案：vite-plugin-mock（Vite 原生适配）
+XSS 防护：DOMPurify
+测试与质量
+单元测试：Vitest 最新版
+类型校验：TypeScript 严格模式全量规则
+构建与优化
+代码混淆：terser
+资源压缩：vite-plugin-compression（同时输出 Gzip + Brotli）
+图片优化：vite-plugin-image-optimizer（构建时自动压缩、生成 WebP/AVIF）
+打包分析：rollup-plugin-visualizer
+代码分割：Vite 原生分包策略 + 路由懒加载
+二、项目架构设计
+标准目录结构
+plaintext
+├── .vscode/                  # 项目级编辑器配置
+│   ├── extensions.json       # 推荐插件列表
+│   └── settings.json         # 统一编辑器规则
+├── .github/
+│   └── workflows/            # GitHub Actions CI 配置
+├── public/                   # 静态资源（不参与构建）
+├── src/
+│   ├── api/                  # 接口请求层（按模块拆分）
+│   ├── assets/               # 静态资源（图片、字体、音频）
+│   ├── components/           # 公共组件
+│   │   ├── common/           # 基础通用组件（Button、Card、Modal等）
+│   │   ├── layout/           # 布局组件（NavBar、Footer、Sidebar等）
+│   │   └── business/         # 业务组件（MusicPlayer、VideoPlayer等）
+│   ├── composables/          # 组合式函数（hooks，use 开头命名）
+│   ├── directives/           # 自定义指令
+│   ├── locales/              # 国际化语言包（按模块拆分）
+│   ├── mock/                 # Mock 接口数据（与 api 层一一对应）
+│   ├── pages/                # 页面组件（对应路由）
+│   ├── router/               # 路由配置
+│   ├── stores/               # Pinia 状态仓库
+│   ├── styles/               # 全局样式、主题变量、Tailwind 入口
+│   ├── types/                # TypeScript 全局类型定义
+│   ├── utils/                # 工具函数
+│   ├── App.vue
+│   ├── main.ts
+│   └── env.d.ts              # 环境变量类型声明
+├── tests/                    # 单元测试目录
+├── .env.development          # 开发环境变量
+├── .env.production           # 生产环境变量
+├── .eslint.config.js             # ESLint 配置
+├── .prettierrc               # Prettier 配置
+├── stylelint.config.cjs      # Stylelint 配置
+├── commitlint.config.cjs     # commitlint 配置
+├── .czrc                     # commitizen 配置
+├── .lintstagedrc             # lint-staged 配置
+├── tailwind.config.ts        # Tailwind 配置
+├── tsconfig.json             # TS 配置
+├── vite.config.ts            # Vite 配置
+├── .nvmrc                    # Node 版本锁定
+├── .npmrc                    # 包管理器配置
+├── .gitignore
+├── CHANGELOG.md
+├── CONTRIBUTING.md           # 贡献规范
+├── README.md
+└── package.json
+公共组件强制封装要求
+所有组件必须具备完整 TypeScript 类型定义、Props 校验、事件抛出、主题适配、响应式适配：
+ThemeSwitch：主题切换组件（3 套主题切换，带状态持久化）
+LangSwitch：语言切换组件（中 / 英 / 韩三语）
+MusicPlayer：全局悬浮音乐播放器（可拖拽、迷你 / 展开模式）
+VideoPlayer：通用视频播放器组件（原生封装、倍速、全屏、进度记忆）
+NavBar：导航栏（桌面端横向、移动端汉堡菜单）
+Footer：全局页脚
+BackTop：返回顶部组件
+Loading：全局加载动画 + 局部骨架屏
+Empty：空状态组件
+BaseCard：通用卡片容器
+BaseButton：通用按钮（多种类型、尺寸、状态）
+Pagination：通用分页组件
+三、页面功能设计（共 9 个页面，含错误页）
+1. 首页 / Home
+视觉定位：酷炫科技感，核心使用 animejs 实现高级动画
+入场动画：大标题逐字显现、元素错落入场、视差滚动效果
+Hero 区域：个人 Slogan、头像呼吸旋转动画、核心标签云浮动效果
+数据看板：访问量、项目数、文章数等数字滚动增长动画
+精选内容：精选项目卡片、最新博客摘要、技能栈雷达 / 标签展示
+动画分级：桌面端完整复杂动效，移动端简化动画保证流畅度
+2. 关于我 / About
+个人基础信息、头像、简介
+技能栈展示：分类技能条 + 进度加载动画
+个人经历时间轴：滚动触发入场动画
+教育背景、联系方式、社交账号入口
+3. 项目作品 / Projects + 项目详情页
+列表页：项目卡片网格布局、分类筛选、关键词搜索、分页、骨架屏
+卡片交互：hover 悬浮动效、技术栈标签标识
+详情页：独立路由（支持 URL 分享），顶部嵌入项目演示视频，包含项目介绍、技术栈、源码链接、在线预览地址
+4. 博客文章 / Blog + 文章详情页
+列表页：文章封面 + 摘要、分类 / 标签筛选、搜索、分页
+详情页：文章正文渲染、目录导航、阅读进度条、相关文章推荐
+辅助信息：发布时间、阅读时长、浏览量
+5. 经验分享 / Experience
+技术教程、学习笔记、踩坑记录分类展示
+资源推荐合集（工具、书籍、网站）
+支持按标签筛选、分页浏览
+6. 影音作品 / Media
+视频内容网格展示（技术教程、个人作品等）
+点击弹窗 / 跳转详情播放，复用 VideoPlayer 组件
+支持分类筛选、视频封面 hover 动效
+7. 留言板 / Guestbook
+留言列表：分页展示、用户头像、昵称、留言内容、时间、点赞功能
+留言表单：昵称、邮箱、内容输入，提交校验
+安全防护：用户输入内容经 DOMPurify 过滤后渲染，防止 XSS 攻击
+8. 友情链接 / Friends
+友链卡片网格布局
+友链申请说明与表单
+支持站点分类
+9. 异常页面（404 / 500）
+带动画效果的错误提示页
+提供返回首页、跳转上一页入口
+四、核心功能实现
+主题系统（3 套主题，符合无障碍标准）
+浅色主题（默认）、深色主题、高对比度无障碍主题
+基于 CSS 变量 + Tailwind 主题扩展实现，切换平滑无闪烁
+色值严格遵循 WCAG 2.1 标准：浅色 / 深色对比度达 AA 级，高对比度达 AAA 级
+支持跟随系统主题自动切换，状态持久化至 localStorage
+所有组件、页面、播放器均适配三套主题
+国际化（中 / 英 / 韩三语）
+使用 vue-i18n 实现，语言包按页面模块拆分，便于维护
+首次访问自动识别浏览器语言，切换即时生效无需刷新
+日期、数字使用原生 Intl API 按语言自动格式化
+语言切换同步更新页面 title、meta 标签
+语言偏好持久化存储
+全局音乐播放器
+固定悬浮于页面右下角，支持自由拖拽移动
+全局常驻，路由切换不中断播放
+功能：播放 / 暂停、上下切歌、进度拖拽、音量调节、播放列表、迷你 / 展开模式切换
+歌曲封面旋转动画、播放状态平滑过渡
+播放状态、进度、音量由 Pinia 全局管理，持久化记录
+内置 3-5 首示例在线音频，可直接播放
+视频播放器
+封装为通用业务组件，可在任意页面复用
+基础能力：播放 / 暂停、进度拖拽、音量控制、静音切换
+高级能力：0.5x-2x 倍速、全屏播放、封面占位、缓冲加载、播放进度记忆
+交互适配：键盘快捷键、移动端手势、横屏自动适配
+音视频互斥逻辑：视频播放时自动暂停全局音乐，视频结束 / 暂停后可配置自动恢复音乐
+完全适配三套主题与响应式布局
+响应式设计
+移动端优先原则，断点覆盖 sm/md/lg/xl/2xl
+导航栏移动端折叠为侧边抽屉菜单
+所有页面、组件在手机、平板、桌面端均排版正常
+触摸友好的交互尺寸，可点击元素不小于 44px
+动画与交互
+全局页面切换过渡动画，路由 meta 可配置不同过渡效果
+滚动触发元素入场动画，支持按需触发
+所有按钮、卡片、链接均有 hover/focus 动效
+检测系统 prefers-reduced-motion 设置，自动为开启「减少动态效果」的用户关闭非必要动画
+首页复杂动画专属使用 animejs，常规过渡使用 Vue 原生 Transition
+无障碍适配
+全键盘可访问：所有交互元素支持 Tab 聚焦、Enter/Esc 操作，焦点环清晰可见
+语义化 HTML 标签，补充 ARIA 属性，适配屏幕阅读器
+高对比度主题满足无障碍访问要求
+动画可关闭、字体大小可通过主题扩展适配
+五、数据与接口规范
+Axios 封装要求
+完整封装请求 / 响应拦截器，统一错误处理
+支持请求取消、重复请求拦截、超时重试
+统一 RESTful 响应格式：{ code: number, message: string, data: T }
+错误码全局统一定义，自动弹出统一提示
+预留 Token 认证字段，后续替换 Node 后端零成本
+Mock 数据要求
+所有接口均通过 vite-plugin-mock 实现，与 api 层一一对应
+数据结构与真实后端保持一致，数据量充足保证页面展示效果
+模拟网络延迟、随机异常状态（401/403/500），验证前端错误处理
+支持分页、筛选、搜索等逻辑的真实模拟
+提供统一的 Mock 开关，可一键关闭切换为真实接口
+六、工程化与规范体系
+代码规范
+ESLint：开启 Vue3 推荐规则 + TypeScript 严格规则 + 导入自动排序
+Prettier：统一代码格式化规则，保存自动执行
+Stylelint：校验 CSS 语法、属性顺序，配合 Prettier 统一样式格式
+TypeScript：开启全量严格模式，禁止隐式 any，全局类型声明完善
+统一命名规范：
+组件：PascalCase
+组合式函数：camelCase 且 use 开头
+常量：全大写下划线分隔
+普通变量 / 函数：camelCase
+Git 提交规范
+遵循 Conventional Commits 约定式提交规范
+commitizen 提供交互式提交引导，执行 pnpm commit 触发
+commitlint 在 commit-msg 钩子校验提交信息格式
+pre-commit 钩子执行 lint-staged：仅对暂存区文件执行 ESLint + Prettier + Stylelint 格式化与检查
+pre-commit 钩子同步执行 tsc --noEmit 全量类型检查
+提供 standard-version 命令，自动根据提交记录生成 CHANGELOG 并升级版本号
+测试体系
+使用 Vitest 搭建单元测试环境
+工具函数、公共组件、Pinia 仓库编写基础测试用例
+提供测试命令，CI 中自动执行
+环境一致性
+.nvmrc 锁定 Node 版本
+.npmrc 锁定包管理器为 pnpm
+.vscode 目录统一编辑器配置与推荐插件
+环境变量分开发 / 生产环境，提供类型声明
+七、构建与性能优化
+打包优化配置
+生产环境移除所有 console、debugger，开启 terser 代码混淆
+代码分割策略：
+第三方稳定依赖（Vue、Router、Pinia）单独拆包，利用浏览器缓存
+路由级代码分割，按需加载
+大型第三方库按需引入
+同时生成 Gzip 与 Brotli 双格式压缩文件
+构建时自动压缩图片，生成 WebP/AVIF 格式
+字体子集化 + 预加载，避免字体闪烁
+提供打包体积分析命令，可视化展示依赖占比
+性能保障
+图片懒加载、组件懒加载、路由懒加载三级懒加载策略
+首页关键资源预加载，非关键资源异步加载
+动画优先使用 transform/opacity 属性，避免重排重绘
+预留 Web Vitals 核心性能指标采集能力
+八、长期维护配套
+README.md：包含项目介绍、技术栈、快速启动、目录结构、部署教程
+CONTRIBUTING.md：贡献规范、代码规范、提交流程说明
+GitHub Actions CI：每次提交自动执行代码检查、类型校验、构建测试
+部署配置：提供 Vercel / Netlify 一键部署配置，附带 Nginx 部署参考
+版本管理：standard-version 自动维护版本号与更新日志
+扩展性设计：所有模块低耦合，新增页面、组件、接口无需改动核心代码
+九、输出要求
+请按以下顺序完整输出所有项目代码，每个文件标注完整相对路径，代码完整可直接运行，不省略关键逻辑，注释清晰规范：
+项目整体架构与设计说明
+package.json 完整依赖、脚本命令
+所有根目录配置文件（Vite、TS、Tailwind、ESLint、Prettier、Stylelint、commitlint、commitizen、husky、lint-staged、环境变量等）
+全局样式、主题变量、Tailwind 主题配置
+路由配置（含路由守卫、meta 元信息）
+Pinia 所有状态仓库（含持久化配置）
+所有公共组件代码
+按页面逐个输出所有页面组件代码
+Axios 封装、API 接口层、完整 Mock 数据
+工具函数、组合式函数、类型定义、自定义指令
+国际化语言包（中 / 英 / 韩三语）
+单元测试基础用例
+GitHub Actions CI 配置
+入口文件 main.ts、App.vue
+README.md、CONTRIBUTING.md、CHANGELOG.md 文档
+最终生成的项目需可直接通过 pnpm install && pnpm dev 启动运行，无报错、功能完整、样式美观、适配全端。
