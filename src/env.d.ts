@@ -2,9 +2,12 @@
 
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
+  readonly VITE_APP_DESCRIPTION: string
+  readonly VITE_APP_BASE_URL: string
+  readonly VITE_APP_PORT: string
+  readonly VITE_APP_REQUEST_URL: string
   readonly VITE_API_BASE_URL: string
   readonly VITE_MOCK_ENABLED: string
-  readonly VITE_MOCK_DELAY: string
 }
 
 interface ImportMeta {
@@ -13,12 +16,7 @@ interface ImportMeta {
 
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
+
   const component: DefineComponent<object, object, unknown>
   export default component
-}
-
-declare module 'virtual:generated-pages' {
-  import type { RouteRecordRaw } from 'vue-router'
-  const routes: RouteRecordRaw[]
-  export default routes
 }

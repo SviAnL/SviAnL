@@ -1,17 +1,17 @@
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
-import type { ThemeMode } from '@/types'
+import { APP_SUPPORTED_THEMES, APP_STORAGE_KEYS, type AppSupportedTheme } from '@/constants'
 
 export const useThemeStore = defineStore(
   'theme',
   () => {
-    const mode = ref<ThemeMode>('system')
-    const resolvedTheme = ref<'light' | 'dark' | 'high-contrast'>('light')
+    const mode = ref<AppSupportedTheme>('system')
+    const resolvedTheme = ref<Exclude<AppSupportedTheme, 'system'>>('light')
 
     const isDark = computed(() => resolvedTheme.value === 'dark')
     const isHighContrast = computed(() => resolvedTheme.value === 'high-contrast')
 
-    function resolveTheme(): 'light' | 'dark' | 'high-contrast' {
+    function resolveTheme() {
       if (mode.value === 'system') {
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
       }
@@ -25,21 +25,21 @@ export const useThemeStore = defineStore(
       const meta = document.querySelector('meta[name="theme-color"]')
       if (meta) {
         const colors: Record<string, string> = {
-          light: '#3b82f6',
-          dark: '#1e293b',
-          'high-contrast': '#000000',
+          light: '#f8fafc',
+          dark: '#0f172a',
+          'high-contrast': '#000',
         }
         meta.setAttribute('content', colors[resolvedTheme.value])
       }
     }
 
-    function setTheme(newMode: ThemeMode): void {
+    function setTheme(newMode: AppSupportedTheme): void {
       mode.value = newMode
       applyTheme()
     }
 
     function cycleTheme(): void {
-      const modes: ThemeMode[] = ['light', 'dark', 'high-contrast', 'system']
+      const modes = APP_SUPPORTED_THEMES.map((item) => item.mode)
       const idx = modes.indexOf(mode.value)
       setTheme(modes[(idx + 1) % modes.length])
     }
@@ -55,5 +55,5 @@ export const useThemeStore = defineStore(
 
     return { mode, resolvedTheme, isDark, isHighContrast, setTheme, cycleTheme, init, applyTheme }
   },
-  { persist: { key: 'svianl_theme', pick: ['mode'] } },
+  { persist: { key: APP_STORAGE_KEYS.THEME, pick: ['mode'] } },
 )

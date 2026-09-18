@@ -1,36 +1,3 @@
-/** 统一 API 响应格式 */
-export interface ApiResponse<T = unknown> {
-  code: number
-  message: string
-  data: T
-}
-
-/** 分页请求参数 */
-export interface PaginationParams {
-  page: number
-  pageSize: number
-  keyword?: string
-  category?: string
-  tag?: string
-}
-
-/** 分页响应数据 */
-export interface PaginatedData<T> {
-  list: T[]
-  total: number
-  page: number
-  pageSize: number
-}
-
-/** 主题类型 */
-export type ThemeMode = 'light' | 'dark' | 'high-contrast' | 'system'
-
-/** 语言类型 */
-export type LocaleType = 'zh-CN' | 'en-US' | 'ko-KR'
-
-/** 路由过渡动画类型 */
-export type TransitionName = 'fade' | 'slide-left' | 'slide-right' | 'zoom'
-
 /** 项目信息 */
 export interface Project {
   id: string

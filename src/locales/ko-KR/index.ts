@@ -34,7 +34,8 @@ export default {
     views: '조회수',
     readTime: '읽기 시간',
     minutes: '분',
-    error: '오류',
+    requestFail: '요청 실패',
+    networkError: '네트워크 연결에 실패했습니다. 네트워크를 확인해 주세요.',
     success: '성공',
   },
   home: {
@@ -96,6 +97,9 @@ export default {
     siteName: '사이트 이름',
     siteUrl: '사이트 URL',
     siteDesc: '설명',
+    email: '이메일',
+    emailInvalid: '이메일 형식이 올바르지 않습니다',
+    fieldRequired: '필수 항목입니다',
     applyNote: '사이트가 건강하고 활발한지 확인하세요. 신청 전에 우리 링크를 추가해주세요.',
   },
   error: {
@@ -106,8 +110,9 @@ export default {
   },
   theme: { light: '라이트', dark: '다크', highContrast: '고대비', system: '시스템' },
   music: { playlist: '재생 목록', nowPlaying: '재생 중', noSong: '곡 없음' },
+  video: { unknownVideoError: '알 수 없는 비디오 오류' },
   footer: {
     copyright: '© {year} SviAnL. All rights reserved.',
-    built: 'Vue 3 + TypeScript + Vite로 제작',
+    description: '늘 갈구하라, 늘 우직하라.',
   },
 }

@@ -1,12 +1,11 @@
-import { get } from '@/utils/request'
+import { get, post } from '@/api/request'
+import type { PaginatedResponse, PaginationParams } from './types'
 import type {
   BlogPost,
   ExperienceItem,
   FriendLink,
   GuestbookMessage,
   MediaItem,
-  PaginatedData,
-  PaginationParams,
   Profile,
   Project,
   SiteStats,
@@ -23,46 +22,42 @@ export const aboutApi = {
 }
 
 export const projectApi = {
-  getList: (params: PaginationParams) =>
-    get<PaginatedData<Project>>('/projects', params as Record<string, unknown>),
+  getList: (params: PaginationParams) => get<PaginatedResponse<Project>>('/projects', params),
   getDetail: (id: string) => get<Project>(`/projects/${id}`),
   getCategories: () => get<string[]>('/projects/categories'),
 }
 
 export const blogApi = {
-  getList: (params: PaginationParams) =>
-    get<PaginatedData<BlogPost>>('/blog', params as Record<string, unknown>),
+  getList: (params: PaginationParams) => get<PaginatedResponse<BlogPost>>('/blog', params),
   getDetail: (id: string) => get<BlogPost>(`/blog/${id}`),
-  getRelated: (id: string) => get<BlogPost[]>(`/blog/${id}/related`),
+  getRelated: (id: string) => get<BlogPost[]>(`/blog/related/${id}`),
   getCategories: () => get<string[]>('/blog/categories'),
   getTags: () => get<string[]>('/blog/tags'),
 }
 
 export const experienceApi = {
   getList: (params: PaginationParams) =>
-    get<PaginatedData<ExperienceItem>>('/experience', params as Record<string, unknown>),
+    get<PaginatedResponse<ExperienceItem>>('/experience', params),
   getDetail: (id: string) => get<ExperienceItem>(`/experience/${id}`),
 }
 
 export const mediaApi = {
-  getList: (params: PaginationParams) =>
-    get<PaginatedData<MediaItem>>('/media', params as Record<string, unknown>),
+  getList: (params: PaginationParams) => get<PaginatedResponse<MediaItem>>('/media', params),
   getDetail: (id: string) => get<MediaItem>(`/media/${id}`),
   getCategories: () => get<string[]>('/media/categories'),
 }
 
 export const guestbookApi = {
   getList: (params: PaginationParams) =>
-    get<PaginatedData<GuestbookMessage>>('/guestbook', params as Record<string, unknown>),
+    get<PaginatedResponse<GuestbookMessage>>('/guestbook', params),
   submit: (data: { nickname: string; email: string; content: string }) =>
-    import('@/utils/request').then(({ post }) => post<GuestbookMessage>('/guestbook', data)),
-  like: (id: string) =>
-    import('@/utils/request').then(({ post }) => post<{ likes: number }>(`/guestbook/${id}/like`)),
+    post<GuestbookMessage>('/guestbook', data),
+  like: (id: string) => post<{ likes: number }>(`/guestbook/${id}/like`),
 }
 
 export const friendsApi = {
   getList: () => get<FriendLink[]>('/friends'),
   getCategories: () => get<string[]>('/friends/categories'),
   apply: (data: { name: string; url: string; email: string; description: string }) =>
-    import('@/utils/request').then(({ post }) => post<{ success: boolean }>('/friends/apply', data)),
+    post<{ success: boolean }>('/friends/apply', data),
 }

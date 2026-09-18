@@ -34,13 +34,19 @@ export default {
     views: 'Views',
     readTime: 'Read time',
     minutes: 'min',
-    error: 'Error',
+    requestFail: 'Request failed',
+    networkError: 'Network connection failed, please check your network',
     success: 'Success',
   },
   home: {
     title: 'Home',
     slogan: 'Building Digital Experiences with Code & Creativity',
-    stats: { visits: 'Visits', projects: 'Projects', articles: 'Articles', experiences: 'Experiences' },
+    stats: {
+      visits: 'Visits',
+      projects: 'Projects',
+      articles: 'Articles',
+      experiences: 'Experiences',
+    },
     featured: 'Featured Projects',
     latest: 'Latest Posts',
     skills: 'Skills',
@@ -96,6 +102,9 @@ export default {
     siteName: 'Site Name',
     siteUrl: 'Site URL',
     siteDesc: 'Description',
+    email: 'Email',
+    emailInvalid: 'Invalid email format',
+    fieldRequired: 'This field is required',
     applyNote: 'Please ensure your site is healthy and active. Add our link before applying.',
   },
   error: {
@@ -106,8 +115,9 @@ export default {
   },
   theme: { light: 'Light', dark: 'Dark', highContrast: 'High Contrast', system: 'System' },
   music: { playlist: 'Playlist', nowPlaying: 'Now Playing', noSong: 'No song' },
+  video: { unknownVideoError: 'Unknown video error' },
   footer: {
     copyright: '© {year} SviAnL. All rights reserved.',
-    built: 'Built with Vue 3 + TypeScript + Vite',
+    description: 'Stay hungry, Stay foolish.',
   },
 }

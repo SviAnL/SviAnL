@@ -34,7 +34,8 @@ export default {
     views: '浏览量',
     readTime: '阅读时长',
     minutes: '分钟',
-    error: '出错了',
+    requestFail: '请求失败',
+    networkError: '网络连接失败，请检查网络',
     success: '操作成功',
   },
   home: {
@@ -105,6 +106,9 @@ export default {
     siteName: '站点名称',
     siteUrl: '站点地址',
     siteDesc: '站点描述',
+    email: '邮箱',
+    emailInvalid: '邮箱格式不正确',
+    fieldRequired: '此项为必填',
     applyNote: '友链申请说明：请确保您的网站内容健康、更新活跃，添加本站链接后提交申请。',
   },
   error: {
@@ -124,8 +128,9 @@ export default {
     nowPlaying: '正在播放',
     noSong: '暂无歌曲',
   },
+  video: { unknownVideoError: '未知视频错误' },
   footer: {
     copyright: '© {year} SviAnL. All rights reserved.',
-    built: '使用 Vue 3 + TypeScript + Vite 构建',
+    description: '求知若饥，虚心若愚。',
   },
 }

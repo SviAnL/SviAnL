@@ -1,100 +1,44 @@
-import { defineConfig, loadEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
 import { resolve } from 'node:path'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
-import { viteMockServe } from 'vite-plugin-mock'
-import viteCompression from 'vite-plugin-compression'
-import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
-import { visualizer } from 'rollup-plugin-visualizer'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig, loadEnv } from 'vite'
+import { createVitePlugins } from './build/vite-plugins'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
-  const isAnalyze = mode === 'analyze'
-  const isProd = mode === 'production'
 
   return {
-    plugins: [
-      vue(),
-      AutoImport({
-        imports: ['vue', 'vue-router', 'pinia', 'vue-i18n'],
-        dts: 'src/types/auto-imports.d.ts',
-        dirs: ['src/composables', 'src/stores'],
-        vueTemplate: true,
-      }),
-      Components({
-        dts: 'src/types/components.d.ts',
-        resolvers: [
-          IconsResolver({
-            prefix: 'icon',
-            enabledCollections: ['mdi', 'ri'],
-          }),
-        ],
-      }),
-      Icons({ autoInstall: true }),
-      viteMockServe({
-        mockPath: 'src/mock',
-        enable: env.VITE_MOCK_ENABLED === 'true',
-        watchFiles: true,
-      }),
-      isProd &&
-        viteCompression({
-          algorithm: 'gzip',
-          ext: '.gz',
-        }),
-      isProd &&
-        viteCompression({
-          algorithm: 'brotliCompress',
-          ext: '.br',
-        }),
-      isProd &&
-        ViteImageOptimizer({
-          png: { quality: 80 },
-          jpeg: { quality: 80 },
-          webp: { quality: 80 },
-          avif: { quality: 70 },
-        }),
-      isAnalyze &&
-        visualizer({
-          open: true,
-          filename: 'stats.html',
-          gzipSize: true,
-        }),
-      tailwindcss(),
-    ].filter(Boolean),
+    base: env.VITE_APP_BASE_URL,
+
+    define: {
+      __VUE_PROD_DEVTOOLS__: false,
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
+    },
+
+    plugins: createVitePlugins(mode),
+
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
       },
     },
-    css: {
-      postcss: './postcss.config.cjs',
-    },
+
     server: {
-      port: 5173,
+      port: Number(env.VITE_APP_PORT),
       host: true,
     },
+
     build: {
-      target: 'es2020',
-      minify: 'terser',
-      terserOptions: {
-        compress: {
-          drop_console: true,
-          drop_debugger: true,
-        },
-      },
-      rollupOptions: {
+      rolldownOptions: {
         output: {
-          manualChunks: {
-            'vue-vendor': ['vue', 'vue-router', 'pinia'],
-            'utils-vendor': ['axios', 'vue-i18n', '@vueuse/core'],
+          codeSplitting: {
+            groups: [
+              {
+                name: 'vue-vendor',
+                test: /[\\/]node_modules[\\/](vue|vue-router|pinia|vue-i18n)[\\/]/,
+              },
+            ],
           },
         },
       },
-      chunkSizeWarningLimit: 1000,
     },
   }
 })

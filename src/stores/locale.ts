@@ -1,42 +1,40 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { LocaleType } from '@/types'
+import { APP_SUPPORTED_LOCALES, APP_STORAGE_KEYS, type AppSupportedLocale } from '@/constants'
 import { i18n } from '@/locales/setup'
-
-const LOCALE_MAP: Record<LocaleType, string> = {
-  'zh-CN': 'zh-CN',
-  'en-US': 'en-US',
-  'ko-KR': 'ko-KR',
-}
 
 export const useLocaleStore = defineStore(
   'locale',
   () => {
-    const locale = ref<LocaleType>('zh-CN')
+    const locale = ref<AppSupportedLocale>('zh-CN')
 
-    function detectBrowserLocale(): LocaleType {
+    function detectBrowserLocale(): AppSupportedLocale {
       const browserLang = navigator.language
       if (browserLang.startsWith('zh')) return 'zh-CN'
       if (browserLang.startsWith('ko')) return 'ko-KR'
       return 'en-US'
     }
 
-    function setLocale(newLocale: LocaleType): void {
+    function setLocale(newLocale: AppSupportedLocale): void {
       locale.value = newLocale
-      i18n.global.locale.value = LOCALE_MAP[newLocale]
+      i18n.global.locale.value = newLocale
       document.documentElement.lang = newLocale
     }
 
     function init(): void {
-      const stored = localStorage.getItem('svianl_locale')
-      if (stored && ['zh-CN', 'en-US', 'ko-KR'].includes(stored)) {
-        setLocale(stored as LocaleType)
-      } else {
-        setLocale(detectBrowserLocale())
+      const stored = localStorage.getItem(APP_STORAGE_KEYS.LOCALE)
+      if (stored) {
+        const locale = JSON.parse(stored).locale as AppSupportedLocale
+        const locales = APP_SUPPORTED_LOCALES.map((item) => item.code)
+        if (locales.includes(locale)) {
+          setLocale(locale)
+          return
+        }
       }
+      setLocale(detectBrowserLocale())
     }
 
     return { locale, setLocale, init, detectBrowserLocale }
   },
-  { persist: { key: 'svianl_locale', pick: ['locale'] } },
+  { persist: { key: APP_STORAGE_KEYS.LOCALE, pick: ['locale'] } },
 )

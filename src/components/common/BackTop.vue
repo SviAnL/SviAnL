@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import { useBackTop } from '@/composables/useScroll'
+  import { Icon } from '@iconify/vue'
+  import { useBackTop } from '@/composables/useBackTop'
 
-const { visible, scrollToTop } = useBackTop()
+  const { visible, scrollToTop } = useBackTop()
 </script>
 
 <template>
-  <Transition name="fade">
+  <Transition name="slide-left">
     <button
       v-show="visible"
-      class="btn-touch fixed bottom-24 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50 md:bottom-8"
-      aria-label="Back to top"
+      class="bg-primary hover:bg-primary/90 focus:ring-primary/50 fixed right-16 bottom-24 z-40 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-white shadow-lg transition-all hover:shadow-xl focus:ring-2 focus:outline-none md:bottom-8"
+      aria-label="BackTop"
       @click="scrollToTop"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 8l-6 6h12l-6-6z" />
-      </svg>
+      <Icon icon="mdi:arrow-up" />
     </button>
   </Transition>
 </template>
