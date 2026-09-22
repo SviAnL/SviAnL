@@ -170,6 +170,9 @@ export default defineConfig([
         parser: tsEslint.parser,
         ecmaVersion: 'latest',
         sourceType: 'module',
+        extraFileExtensions: ['.vue'],
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
       },
     },
     plugins: {
