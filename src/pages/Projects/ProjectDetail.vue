@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { projectApi } from '@/api'
-  import VideoPlayer from '@/components/business/VideoPlayer.vue'
+  import { VideoPlayer } from '@/components/business/video-player'
   import BaseButton from '@/components/common/BaseButton.vue'
   import BaseLoading from '@/components/common/BaseLoading.vue'
   import { sanitizeHtml } from '@/utils'
