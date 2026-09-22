@@ -76,7 +76,7 @@
         v-model="keyword"
         type="search"
         class="border-border bg-surface focus:border-primary focus:ring-primary/30 flex-1 rounded-lg border px-4 py-2 focus:ring-2 focus:outline-none"
-        :placeholder="t('projects.search')"
+        :placeholder="t('common.searchKeyWord')"
       />
       <div class="flex flex-wrap gap-2">
         <button

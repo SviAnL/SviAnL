@@ -67,7 +67,7 @@
       <input
         v-model="keyword"
         type="search"
-        :placeholder="t('blog.search')"
+        :placeholder="t('common.searchKeyWord')"
         class="border-border bg-surface focus:border-primary focus:ring-primary/30 flex-1 rounded-lg border px-4 py-2 focus:ring-2 focus:outline-none"
       />
       <div class="flex flex-wrap gap-2">
@@ -110,7 +110,7 @@
           class="mb-3 h-40 w-full rounded-lg object-cover"
         />
         <div class="text-primary flex items-center justify-between text-xs">
-          <span>{{ post.category }}</span>
+          <span class="text-secondary">{{ post.category }}</span>
           <div class="flex gap-2">
             <span v-for="tag in post.tags" :key="tag" class="bg-primary/10 rounded-full px-3 py-1">
               {{ tag }}
@@ -125,8 +125,8 @@
         </p>
         <div class="text-muted mt-3 flex items-center gap-3 text-xs">
           <span>{{ formatDate(post.createdAt) }}</span>
-          <span>{{ post.readTime }} {{ t('common.minutes') }}</span>
-          <span>{{ post.views }} {{ t('common.views') }}</span>
+          <span>{{ post.readTime }}{{ t('common.minutes') }}</span>
+          <span>{{ post.views }}{{ t('common.views') }}</span>
         </div>
       </BaseCard>
     </div>

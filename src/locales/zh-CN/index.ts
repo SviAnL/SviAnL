@@ -37,6 +37,7 @@ export default {
     requestFail: '请求失败',
     networkError: '网络连接失败，请检查网络',
     success: '操作成功',
+    searchKeyWord: '搜索关键字...',
   },
   home: {
     title: '首页',
@@ -65,14 +66,12 @@ export default {
     demo: '在线预览',
     repo: '源码地址',
     tech: '技术栈',
-    search: '搜索项目...',
   },
   blog: {
     title: '博客文章',
     detail: '文章详情',
     toc: '目录',
     related: '相关文章',
-    search: '搜索文章...',
     progress: '阅读进度',
   },
   experience: {
