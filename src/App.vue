@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import MusicPlayer from '@/components/business/MusicPlayer.vue'
+  import MusicPlayer from '@/components/business/music-player'
   import BackTop from '@/components/common/BackTop.vue'
   import AppFooter from '@/components/layout/AppFooter.vue'
   import AppHeader from '@/components/layout/AppHeader.vue'

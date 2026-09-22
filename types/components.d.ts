@@ -21,11 +21,15 @@ declare module 'vue' {
     BaseLoading: typeof import('./../src/components/common/BaseLoading.vue')['default']
     BasePagination: typeof import('./../src/components/common/BasePagination.vue')['default']
     BaseSkeleton: typeof import('./../src/components/common/BaseSkeleton.vue')['default']
+    ExpandedPlayer: typeof import('./../src/components/business/music-player/ExpandedPlayer.vue')['default']
     LangSwitch: typeof import('./../src/components/common/LangSwitch.vue')['default']
-    MusicPlayer: typeof import('./../src/components/business/MusicPlayer.vue')['default']
+    MiniPlayer: typeof import('./../src/components/business/music-player/MiniPlayer.vue')['default']
+    MusicPlayer: typeof import('./../src/components/business/music-player/MusicPlayer.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ThemeSwitch: typeof import('./../src/components/common/ThemeSwitch.vue')['default']
-    VideoPlayer: typeof import('./../src/components/business/VideoPlayer.vue')['default']
+    VideoControls: typeof import('./../src/components/business/video-player/VideoControls.vue')['default']
+    VideoPlayer: typeof import('./../src/components/business/video-player/VideoPlayer.vue')['default']
+    VideoProgressBar: typeof import('./../src/components/business/video-player/VideoProgressBar.vue')['default']
   }
 }
