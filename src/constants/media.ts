@@ -6,11 +6,27 @@ export const MEDIA_ERROR_MESSAGE: Record<number, string> = {
   4: 'MEDIA_ERR_SRC_NOT_SUPPORTED：媒体源不支持，格式或地址无法播放',
 }
 
+/** 播放异常错误码对应的提示信息 */
+export const PLAY_EXCEPTION_MESSAGE: Record<string, string> = {
+  NotAllowedError: '播放受限：请先点击页面再播放音频',
+  NotSupportedError: '不支持播放该音频',
+  NetworkError: '网络异常，播放中断',
+  NotFoundError: '音频资源不存在',
+  AbortError: '播放操作被中断',
+  InvalidStateError: '音频状态异常，无法播放',
+}
+
 /** 视频播放速率选项 */
 export const VIDEO_PLAYBACK_RATES = [0.5, 0.75, 1, 1.25, 1.5, 2, 3]
 
 /** 视频播放进度本地存储键名 */
 export const VIDEO_PROGRESS_STORAGE_KEY = 'SviAnL_VIDEO_PROGRESS_'
+
+/** 视频播放音量本地存储键名 */
+export const VIDEO_VOLUME_STORAGE_KEY = 'video-volume'
+
+/** 视频播放速率本地存储键名 */
+export const VIDEO_RATE_STORAGE_KEY = 'video-rate'
 
 /** 图片懒加载灰色占位图*/
 export const IMG_LAZY_PLACEHOLDER =
@@ -35,8 +51,8 @@ export const MUSIC_PLAY_LIST = [
     title: 'Blinding Lights',
     artist: 'The Weeknd',
     cover: 'https://picsum.photos/seed/music2/200/200',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-    duration: 425,
+    url: 'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/music/audio.mp3',
+    duration: 192,
   },
   {
     id: '3',
