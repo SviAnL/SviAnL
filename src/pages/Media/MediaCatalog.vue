@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import { Icon } from '@iconify/vue'
+  import { useScrollLock } from '@vueuse/core'
   import { mediaApi } from '@/api'
-  import VideoPlayer from '@/components/business/VideoPlayer.vue'
+  import { VideoPlayer } from '@/components/business/video-player'
   import BaseCard from '@/components/common/BaseCard.vue'
   import BaseEmpty from '@/components/common/BaseEmpty.vue'
   import BasePagination from '@/components/common/BasePagination.vue'
@@ -10,6 +11,8 @@
   import type { MediaItem } from '@/types'
 
   const { t } = useI18n()
+
+  const isLocked = useScrollLock(document.body)
 
   const loading = ref(true)
 
@@ -25,7 +28,7 @@
 
   const category = ref('')
 
-  const selectedMedia = ref<MediaItem | null>(null)
+  const selectedMedia = ref<MediaItem | null>()
 
   async function fetchMedia() {
     loading.value = true
@@ -45,6 +48,11 @@
   function categoryChange(value: string) {
     category.value = value
     page.value = 1
+  }
+
+  function selectedChange(flag: boolean, value: MediaItem | null) {
+    isLocked.value = flag
+    selectedMedia.value = value
   }
 
   onMounted(async () => {
@@ -92,7 +100,7 @@
         :key="item.id"
         v-reveal
         class="cursor-pointer overflow-hidden p-0!"
-        @click="selectedMedia = item"
+        @click="selectedChange(true, item)"
       >
         <div class="group relative">
           <img
@@ -136,15 +144,15 @@
           class="fixed inset-0 z-200 flex items-center justify-center bg-black/80 p-4"
         >
           <div class="w-full max-w-4xl">
-            <div class="mb-3 flex items-center justify-between pl-2">
-              <h3 class="mt-4 text-center text-lg font-semibold text-white">
+            <div class="mb-3 flex items-center justify-between gap-2">
+              <h3 class="text-center text-lg font-semibold text-white">
                 {{ selectedMedia.title }}
               </h3>
               <button
-                class="flex h-8 w-8 cursor-pointer items-center justify-center text-2xl text-white/70 transition-colors hover:text-white"
-                @click="selectedMedia = null"
+                class="flex cursor-pointer items-center justify-center text-xl text-white/70 transition-colors hover:text-white"
+                @click="selectedChange(false, null)"
               >
-                ✕
+                <Icon icon="mdi:close" />
               </button>
             </div>
 
