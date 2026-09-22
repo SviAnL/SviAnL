@@ -14,21 +14,70 @@
 
   const related = ref<BlogPost[]>([])
 
-  const toc = computed(() => {
-    if (!post.value) return []
-    const headings = post.value.content.match(/<h[23][^>]*>(.*?)<\/h[23]>/g) || []
-    return headings.map((h, i) => ({
-      id: `heading-${i}`,
-      text: h.replace(/<[^>]+>/g, ''),
-      level: h.startsWith('<h2') ? 2 : 3,
-    }))
+  const parsed = computed(() => {
+    if (!post.value) return { html: '', toc: [] as { id: string; text: string; level: number }[] }
+
+    const container = document.createElement('div')
+    container.innerHTML = post.value.content
+
+    const headings = Array.from(container.querySelectorAll('h2, h3'))
+    const toc = headings.map((el, i) => {
+      const id = `blog-heading-${i}`
+      el.id = id
+      return {
+        id,
+        text: el.textContent?.trim() ?? '',
+        level: el.tagName === 'H2' ? 2 : 3,
+      }
+    })
+
+    return { html: container.innerHTML, toc }
   })
+
+  const toc = computed(() => parsed.value.toc)
+
+  const contentHtml = computed(() => sanitizeHtml(parsed.value.html))
+
+  function scrollToHeading(e: MouseEvent, id: string) {
+    e.preventDefault()
+
+    const el = document.getElementById(id)
+    if (!el) return
+
+    const top = el.getBoundingClientRect().top + window.scrollY - 64
+    window.scrollTo({ top, behavior: 'smooth' })
+
+    history.replaceState(null, '', `#${id}`)
+  }
+
+  function scrollToHash() {
+    const hash = decodeURIComponent(location.hash.slice(1))
+    if (!hash) return
+
+    const el = document.getElementById(hash)
+    if (!el) return
+
+    const top = el.getBoundingClientRect().top + window.scrollY - 64
+    window.scrollTo({ top, behavior: 'auto' })
+  }
+
+  watch(
+    () => parsed.value.html,
+    () => nextTick(scrollToHash),
+  )
 
   onMounted(async () => {
     const id = route.params.id as string
     const [detail, rel] = await Promise.all([blogApi.getDetail(id), blogApi.getRelated(id)])
     post.value = detail
     related.value = rel
+
+    nextTick(scrollToHash)
+    window.addEventListener('load', scrollToHash)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('load', scrollToHash)
   })
 </script>
 
@@ -37,18 +86,22 @@
     <article v-if="post">
       <header v-reveal class="mb-8 text-center">
         <h1 class="text-3xl font-bold md:text-4xl">{{ post.title }}</h1>
-        <div class="text-muted mt-4 flex items-center justify-center gap-4 text-sm">
-          <span class="text-primary">{{ post.category }}</span>
-          <span
-            v-for="tag in post.tags"
-            :key="tag"
-            class="bg-primary/10 text-primary rounded-full px-3 py-1"
-          >
-            {{ tag }}
-          </span>
-          <span>{{ formatDate(post.createdAt) }}</span>
-          <span>{{ post.readTime }} {{ t('common.minutes') }}</span>
-          <span>{{ post.views }} {{ t('common.views') }}</span>
+        <div class="text-muted mt-4 flex flex-wrap items-center justify-center gap-4 text-sm">
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <span class="text-secondary">{{ post.category }}</span>
+            <span
+              v-for="tag in post.tags"
+              :key="tag"
+              class="bg-primary/10 text-primary rounded-full px-3 py-1"
+            >
+              {{ tag }}
+            </span>
+          </div>
+          <div class="flex items-center justify-center gap-4 whitespace-nowrap">
+            <span>{{ formatDate(post.createdAt) }}</span>
+            <span>{{ post.readTime }}{{ t('common.minutes') }}</span>
+            <span>{{ post.views }}{{ t('common.views') }}</span>
+          </div>
         </div>
         <img
           v-lazy="post.cover"
@@ -68,6 +121,7 @@
                   :href="`#${item.id}`"
                   class="text-muted hover:text-primary block text-sm transition-colors"
                   :class="item.level === 3 ? 'pl-4' : ''"
+                  @click="scrollToHeading($event, item.id)"
                 >
                   {{ item.text }}
                 </a>
@@ -76,11 +130,7 @@
           </div>
         </aside>
 
-        <div
-          v-reveal
-          class="prose max-w-none lg:col-span-3"
-          v-html="sanitizeHtml(post.content)"
-        ></div>
+        <div v-reveal class="prose max-w-none min-w-0 lg:col-span-3" v-html="contentHtml"></div>
       </div>
 
       <section v-if="related.length" class="mt-12">
