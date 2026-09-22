@@ -22,6 +22,6 @@ export function sanitizeHtml(dirty: string): string {
       'h4',
       'blockquote',
     ],
-    ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
+    ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'id'],
   })
 }
