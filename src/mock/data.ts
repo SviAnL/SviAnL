@@ -159,7 +159,7 @@ export const mockMedia: MediaItem[] = Array.from({ length: 30 }, (_, i) => {
     title: item.title,
     description: item.description,
     cover: cover(i + 40),
-    videoUrl: item.videoUrl,
+    videoUrl: videoUrlPool[i % videoUrlPool.length],
     category: item.category,
     duration: item.duration,
     createdAt: randomDate(i + 300),

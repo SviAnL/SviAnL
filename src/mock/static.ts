@@ -1,9 +1,9 @@
 // 真实可播放的公共测试视频地址池
 export const videoUrlPool = [
-  'https://media.w3.org/2010/05/sintel/trailer.mp4',
-  'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4',
-  'https://www.w3schools.com/html/mov_bbb.mp4',
+  'https://sf1-cdn-tos.huoshanstatic.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-360p.mp4',
   'http://vjs.zencdn.net/v/oceans.mp4',
+  'https://static.jyshare.com/video/movie.mp4',
+  'https://www.w3schools.com/html/mov_bbb.mp4',
   'https://media.w3.org/2010/05/bunny/trailer.mp4',
   'http://vjs.zencdn.net/v/oceans.mp4',
   'https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4',
@@ -12,7 +12,7 @@ export const videoUrlPool = [
 
 // 生成随机日期：2001-01-01 ~ 2026-12-31
 export const randomDate = (i: number) => {
-  const start = new Date(2001, 0, 1).getTime()
+  const start = new Date(2026, 0, 1).getTime()
   const end = new Date(2026, 11, 31).getTime()
   // 用 i 做种子偏移，保证每次生成结果一致（伪随机）
   const seed = (i * 2654435761) % 4294967296
