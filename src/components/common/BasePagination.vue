@@ -40,7 +40,7 @@
 </script>
 
 <template>
-  <nav v-if="totalPages > 1" class="flex items-center justify-center gap-2 py-6">
+  <nav v-if="totalPages > 1" class="flex flex-wrap items-center justify-center gap-2 py-6">
     <button
       class="border-border hover:bg-surface-hover cursor-pointer rounded-lg border px-3 py-2 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-50"
       :disabled="page <= 1"
