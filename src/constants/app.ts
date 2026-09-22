@@ -24,8 +24,8 @@ export type AppSupportedLocale = (typeof APP_SUPPORTED_LOCALES)[number]['code']
 
 /** 支持的主题 */
 export const APP_SUPPORTED_THEMES = [
-  { mode: 'light', label: 'theme.light', icon: '☀️' },
   { mode: 'dark', label: 'theme.dark', icon: '🌙' },
+  { mode: 'light', label: 'theme.light', icon: '☀️' },
   { mode: 'high-contrast', label: 'theme.highContrast', icon: '🔆' },
   { mode: 'system', label: 'theme.system', icon: '💻' },
 ] as const
