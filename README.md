@@ -21,7 +21,7 @@
 <br>
 
 <p align="center">
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&width=100&pause=50&speed=95&lines=命运不会给你无BUG的人生，但给了你修复的权利;以代码书写热爱,以细节打磨作品" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&width=1000&pause=50&speed=50&lines=命运不会给你无BUG的人生，但给了你修复的权利;以代码书写热爱,以细节打磨作品" alt="Typing SVG" />
 </p>
 
 ---

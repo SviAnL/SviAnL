@@ -23,7 +23,7 @@
 <br>
 
 <p align="center">
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&width=100&pause=50&speed=95&lines=Life+won't+give+you+a+bug-free+journey%2C+but+it+gives+you+the+right+to+fix+it;Write+with+code%2C+polish+with+details" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&width=1000&pause=50&speed=50&lines=Fate doesn't give you a bug-free life, but it gives you the right to fix it;Write passion in code, polish works with details" alt="Typing SVG" />
 </p>
 
 ---

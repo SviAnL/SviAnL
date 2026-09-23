@@ -23,7 +23,7 @@
 <br>
 
 <p align="center">
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&width=100&pause=50&speed=95&lines=Life+won't+give+you+a+bug-free+journey%2C+but+it+gives+you+the+right+to+fix+it;Write+with+code%2C+polish+with+details" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&width=1000&pause=50&speed=50&lines=운명은 버그 없는 인생을 주지 않지만, 고칠 권리는 줍니다;코드로 열정을 쓰고, 디테일로 작품을 다듬다" alt="Typing SVG" />
 </p>
 
 ---
