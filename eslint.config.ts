@@ -177,7 +177,6 @@ export default defineConfig([
         ecmaVersion: 'latest',
         sourceType: 'module',
         extraFileExtensions: ['.vue'],
-        projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
