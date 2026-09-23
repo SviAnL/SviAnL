@@ -48,7 +48,6 @@
   },
   "dependencies": {
     "@vueuse/core": "^15.0.0",
-    "animejs": "^4.5.0",
     "axios": "^1.18.1",
     "dompurify": "^3.4.12",
     "pinia": "^4.0.2",
@@ -66,7 +65,6 @@
     "@iconify/vue": "^5.0.1",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/animejs": "^3.1.13",
     "@types/node": "^22.20.1",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vitest/coverage-v8": "4.1.10",
