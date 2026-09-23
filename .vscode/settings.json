@@ -34,7 +34,7 @@
     ".env": ".env.local, .env.development, .env.production, .env.test, .env.analyze",
     ".prettierrc": ".prettierignore",
     ".eslintcache": ".prettiercache, .stylelintcache",
-    "README.md": "README.en.md, README.ko.md",
+    "README.md": "README.en.md, README.ko.md, CONTRIBUTING.md",
     "tsconfig.json": "tsconfig.*.json, tsconfig.tsbuildinfo",
     "vite.config.ts": "vitest.config.ts, vite.config.*.ts",
     ".gitignore": ".gitattributes, .gitmodules",
