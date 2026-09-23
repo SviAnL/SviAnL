@@ -2,6 +2,10 @@
   "name": "SviAnL",
   "version": "1.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SviAnL/SviAnL.git"
+  },
   "license": "MIT",
   "author": "SviAnL",
   "type": "module",
