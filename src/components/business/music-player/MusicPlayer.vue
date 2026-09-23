@@ -1,10 +1,16 @@
 <script setup lang="ts">
+  import { useBreakpoints, breakpointsTailwind } from '@vueuse/core'
   import { useMusicStore } from '@/stores'
   import { useAudioSync } from './composables/useAudioSync'
   import { usePlayerDrag } from './composables/usePlayerDrag'
   import ExpandedPlayer from './ExpandedPlayer.vue'
   import MiniPlayer from './MiniPlayer.vue'
   import type { Position } from './types'
+
+  const breakpoints = useBreakpoints(breakpointsTailwind)
+
+  // 小于 md 断点（即 < 768px），可视为手机
+  const isMobile = breakpoints.smaller('md')
 
   const musicStore = useMusicStore()
 
@@ -79,7 +85,7 @@
   const style = computed(() => {
     const { x, y } = displayPosition.value
     if (x === -1 && y === -1) {
-      return { bottom: '80px', right: '24px' }
+      return { bottom: isMobile.value ? '5rem' : '8rem', right: '24px' }
     }
     return { bottom: 'auto', right: 'auto', left: `${x}px`, top: `${y}px` }
   })

@@ -9,7 +9,7 @@ interface Options {
 }
 
 /** 距屏幕边缘的最小间距 */
-const EDGE_MARGIN = 20
+const EDGE_MARGIN = 24
 
 export function usePlayerDrag({ playerRef, getPosition, setPosition }: Options) {
   const isDragging = ref(false)
