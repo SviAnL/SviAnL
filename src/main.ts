@@ -1,6 +1,7 @@
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
+import { initWebVitals } from '@/utils/webVitals'
 import App from './App.vue'
 import { setupDirectives } from './directives'
 import { i18n } from './locales/setup'
@@ -53,3 +54,6 @@ window.addEventListener('app:toast', (e: CustomEvent<ToastDetail>) => {
 })
 
 app.mount('#app')
+
+// 应用挂载后初始化性能监控
+initWebVitals()
