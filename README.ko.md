@@ -13,20 +13,22 @@
   <a href="./README.ko.md">한국어</a>
 </p>
 
-### <p align="center"><em>热爱代码 · 专注创作 · 持续精进</em></p>
+### <p align="center"><em>코드를 사랑하고 · 창작에 집중하며 · 끊임없이 성장합니다</em></p>
 
-> 一名热爱开源、追求极致体验的开发者，喜欢折腾技术、打磨代码、分享干货。
-> 专注于前端开发、开源项目搭建，信奉 **代码改变世界，细节成就极致**。
+> 오픈 소스를 사랑하고 최고의 경험을 추구하는 개발자입니다.
+> 기술을 탐구하고, 코드를 다듬고, 알찬 내용을 공유하는 것을 좋아합니다.
+> 프런트엔드 개발과 오픈 소스 프로젝트 구축에 집중하고 있으며,
+> **코드는 세상을 바꾸고, 디테일이 완성도를 만든다**고 믿습니다.
 
 <br>
 
 <p align="center">
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&width=100&pause=50&speed=95&lines=命运不会给你无BUG的人生，但给了你修复的权利;以代码书写热爱,以细节打磨作品" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&width=100&pause=50&speed=95&lines=Life+won't+give+you+a+bug-free+journey%2C+but+it+gives+you+the+right+to+fix+it;Write+with+code%2C+polish+with+details" alt="Typing SVG" />
 </p>
 
 ---
 
-## 🛠️ 技术栈
+## 🛠️ 기술 스택
 
 <p align="center">
 <img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
@@ -40,16 +42,16 @@
 
 ---
 
-## 🎯 项目理念
+## 🎯 프로젝트 철학
 
-- **简洁优雅**：代码规范、结构清晰、注释详细，新手也能快速上手
-- **轻量化**：剔除冗余代码，极致性能优化，运行高效稳定
-- **高适配**：多端兼容、响应式布局，保证一致的视觉体验
-- **持续更新**：长期维护迭代，不断新增功能与打磨细节
+- **간결하고 우아하게**: 일관된 규칙, 명확한 구조, 상세한 주석 — 초보자도 쉽게 시작할 수 있습니다
+- **가볍게**: 불필요한 코드를 제거하고 성능을 극한으로 최적화해 빠르고 안정적으로 동작합니다
+- **높은 호환성**: 다양한 플랫폼 지원, 반응형 레이아웃으로 일관된 시각 경험을 제공합니다
+- **지속적인 업데이트**: 장기적으로 유지보수하며 기능을 추가하고 디테일을 다듬습니다
 
 ---
 
-## 📬 联系我
+## 📬 연락하기
 
 <p align="center">
 <a href="https://github.com/SviAnL">
@@ -63,15 +65,15 @@
 </a>
 </p>
 
-> 有合作、交流、学习问题均可随时联系我！
+> 협업, 소통, 학습 관련 문의는 언제든 환영합니다!
 
 ---
 
-## 🤝 支持与交流
+## 🤝 지원 및 소통
 
-欢迎 Star ⭐、Fork 🍴、提交 Issue！
+Star ⭐, Fork 🍴, Issue 제보 모두 환영합니다!
 
-💖 感谢每一位支持和关注我的人，开源之路，感恩同行！
+💖 저를 지지하고 응원해 주시는 모든 분께 감사드립니다. 오픈 소스의 길, 함께해 주셔서 감사합니다.
 
 <p align="center">
 <em>Stay hungry, Stay foolish.</em>

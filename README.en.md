@@ -13,20 +13,22 @@
   <a href="./README.ko.md">한국어</a>
 </p>
 
-### <p align="center"><em>热爱代码 · 专注创作 · 持续精进</em></p>
+### <p align="center"><em>Love the code · Focus on creating · Keep improving</em></p>
 
-> 一名热爱开源、追求极致体验的开发者，喜欢折腾技术、打磨代码、分享干货。
-> 专注于前端开发、开源项目搭建，信奉 **代码改变世界，细节成就极致**。
+> A developer who loves open source and pursues the ultimate experience —
+> always tinkering with tech, polishing code, and sharing what I learn.
+> Focused on frontend development and open-source projects.
+> I believe that **code changes the world, and details make perfection**.
 
 <br>
 
 <p align="center">
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&width=100&pause=50&speed=95&lines=命运不会给你无BUG的人生，但给了你修复的权利;以代码书写热爱,以细节打磨作品" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&width=100&pause=50&speed=95&lines=Life+won't+give+you+a+bug-free+journey%2C+but+it+gives+you+the+right+to+fix+it;Write+with+code%2C+polish+with+details" alt="Typing SVG" />
 </p>
 
 ---
 
-## 🛠️ 技术栈
+## 🛠️ Tech Stack
 
 <p align="center">
 <img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/>
@@ -40,16 +42,16 @@
 
 ---
 
-## 🎯 项目理念
+## 🎯 Philosophy
 
-- **简洁优雅**：代码规范、结构清晰、注释详细，新手也能快速上手
-- **轻量化**：剔除冗余代码，极致性能优化，运行高效稳定
-- **高适配**：多端兼容、响应式布局，保证一致的视觉体验
-- **持续更新**：长期维护迭代，不断新增功能与打磨细节
+- **Clean & elegant**: consistent conventions, clear structure, well-commented — easy for newcomers to pick up
+- **Lightweight**: no redundant code, optimized for performance, fast and stable
+- **Highly adaptable**: multi-platform compatible, responsive layouts, consistent visual experience
+- **Continuously maintained**: long-term iteration, new features and details refined over time
 
 ---
 
-## 📬 联系我
+## 📬 Contact Me
 
 <p align="center">
 <a href="https://github.com/SviAnL">
@@ -63,15 +65,15 @@
 </a>
 </p>
 
-> 有合作、交流、学习问题均可随时联系我！
+> Feel free to reach out for collaboration, chat, or learning!
 
 ---
 
-## 🤝 支持与交流
+## 🤝 Support & Community
 
-欢迎 Star ⭐、Fork 🍴、提交 Issue！
+Stars ⭐, forks 🍴, and issues are all welcome!
 
-💖 感谢每一位支持和关注我的人，开源之路，感恩同行！
+💖 Thanks to everyone who supports and follows me. Grateful to walk this open-source road together.
 
 <p align="center">
 <em>Stay hungry, Stay foolish.</em>
