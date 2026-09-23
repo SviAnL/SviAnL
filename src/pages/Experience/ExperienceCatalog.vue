@@ -39,6 +39,9 @@
       })
       items.value = res.list
       total.value = res.total
+      nextTick(() => {
+        window.scrollTo({ top: 0 })
+      })
     } finally {
       loading.value = false
     }

@@ -34,6 +34,9 @@
       const res = await guestbookApi.getList({ page: page.value, pageSize: pageSize.value })
       messages.value = res.list
       total.value = res.total
+      nextTick(() => {
+        window.scrollTo({ top: 0 })
+      })
     } finally {
       loading.value = false
     }
