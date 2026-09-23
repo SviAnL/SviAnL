@@ -40,6 +40,7 @@ stats.html
 
 # TypeScript
 *.tsbuildinfo
+tsc-build
 
 
 # Cache

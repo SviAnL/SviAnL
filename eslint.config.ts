@@ -104,7 +104,13 @@ const commonVueRules: Linter.RulesRecord = {
 
 export default defineConfig([
   {
-    ignores: ['dist', 'node_modules', 'src/types/auto-imports.d.ts', 'src/types/components.d.ts'],
+    ignores: [
+      'node_modules',
+      'dist',
+      'tsc-build',
+      'src/types/auto-imports.d.ts',
+      'src/types/components.d.ts',
+    ],
   },
 
   js.configs.recommended,

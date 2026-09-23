@@ -19,3 +19,6 @@ public/
 
 # 忽略自动生成的类型定义文件
 types/
+
+# 忽略typescript编译输出目录
+tsc-build
