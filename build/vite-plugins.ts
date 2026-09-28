@@ -8,6 +8,7 @@ import Components from 'unplugin-vue-components/vite'
 import { compression } from 'vite-plugin-compression2'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import ConsoleKeeper from 'vite-plugin-keep-console'
+import vueDevTools from 'vite-plugin-vue-devtools'
 import type { PluginOption } from 'vite'
 
 export function createVitePlugins(mode: string): PluginOption[] {
@@ -16,6 +17,7 @@ export function createVitePlugins(mode: string): PluginOption[] {
 
   return [
     vue(),
+    vueDevTools(),
 
     AutoImport({
       imports: ['vue', 'vue-router', 'vue-i18n'],
