@@ -62,8 +62,9 @@
     "web-vitals": "^6.2.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.2.1",
-    "@commitlint/config-conventional": "^21.2.0",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@commitlint/types": "^21.2.3",
     "@eslint/js": "^10.0.1",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/ri": "^1.2.10",
